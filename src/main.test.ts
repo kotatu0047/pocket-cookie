@@ -1,5 +1,7 @@
-import say from './main'
+import api from './main'
 
-test('say test', () => {
-  expect(say('Cookie')).toBe('helloCookie')
+test('simple value', () => {
+  document.cookie = 'foo=bar'
+
+  expect(api.get('foo')).toBe('bar')
 })
