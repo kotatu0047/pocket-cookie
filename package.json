@@ -8,7 +8,7 @@
   "private": false,
   "scripts": {
     "rollup": "rollup -c",
-    "test": "test"
+    "test": "todo test"
   },
   "repository": {
     "type": "git",
@@ -28,9 +28,36 @@
     "@babel/plugin-transform-modules-commonjs": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
     "@babel/preset-typescript": "^7.7.4",
+    "@typescript-eslint/eslint-plugin": "^2.8.0",
+    "@typescript-eslint/parser": "^2.8.0",
+    "eslint": "^6.7.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^23.0.4",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prefer-arrow": "^1.1.6",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.4.3",
+    "prettier": "^1.19.1",
     "rollup": "^1.27.4",
     "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-node-resolve": "^5.2.0"
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "typescript": "^3.7.2"
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "author": "kotatu <yamamichi1995@outlook.jp> (https://github.com/aclearworld)",
   "license": "MIT",
