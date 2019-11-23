@@ -1,0 +1,41 @@
+{
+  "name": "pocket-cookie",
+  "version": "0.0.1-beta",
+  "description": "a JavaScript cookie library",
+  "cjs": "dist/pocket-cookie.cjs.js",
+  "module": "dist/pocket-cookie.js",
+  "type": "module",
+  "private": false,
+  "scripts": {
+    "rollup": "rollup -c",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aclearworld/pocket-cookie.git"
+  },
+  "keywords": [
+    "cookie",
+    "cookies",
+    "browser",
+    "pocket-cookie"
+  ],
+  "files": [
+    "dist/**/*"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/preset-typescript": "^7.7.4",
+    "rollup": "^1.27.4",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-node-resolve": "^5.2.0"
+  },
+  "author": "kotatu <yamamichi1995@outlook.jp> (https://github.com/aclearworld)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aclearworld/pocket-cookie/issues"
+  },
+  "homepage": "https://github.com/aclearworld/pocket-cookie#readme"
+}
