@@ -6,31 +6,6 @@ export default [
   {
     input: 'src/main.ts',
     output: {
-      file: pkg.cjs,
-      format: 'cjs',
-    },
-    plugins: [
-      resolve(),
-      babel({
-        babelrc: false,
-        extensions: ['.js', '.ts'],
-        presets: [
-          [
-            '@babel/preset-env',
-            {
-              modules: false,
-              targets: '>1%',
-            },
-          ],
-          '@babel/preset-typescript',
-        ],
-        exclude: 'node_modules/**',
-      }),
-    ],
-  },
-  {
-    input: 'src/main.ts',
-    output: {
       file: pkg.module,
       format: 'esm',
     },
@@ -38,16 +13,21 @@ export default [
       resolve(),
       babel({
         babelrc: false,
-        extensions: ['.js', '.ts'],
+        extensions: ['.ts'],
         presets: [
           [
             '@babel/preset-env',
             {
+              loose: true,
               modules: false,
               targets: '>1%',
             },
           ],
           '@babel/preset-typescript',
+        ],
+        plugins: [
+          ['@babel/proposal-class-properties', { loose: true }],
+          ['@babel/proposal-object-rest-spread', { loose: true }],
         ],
         exclude: 'node_modules/**',
       }),

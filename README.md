@@ -2,6 +2,6 @@
 a JavaScript cookie library
 
 ## TODO
- - .editorConfig
- - eslint コミット前実行 
+ - test  コミット前実行 
+ - test coverage
  - github actions

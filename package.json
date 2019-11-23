@@ -2,13 +2,18 @@
   "name": "pocket-cookie",
   "version": "0.0.1-beta",
   "description": "a JavaScript cookie library",
-  "cjs": "dist/pocket-cookie.cjs.js",
   "module": "dist/pocket-cookie.js",
   "type": "module",
   "private": false,
   "scripts": {
-    "rollup": "rollup -c",
-    "test": "todo test"
+    "build": "npm run prebuild && npm-run-all --parallel lint:fix type-check test:no-coverage rollup",
+    "prebuild": "rimraf dist",
+    "lint:fix": "eslint --ext ./ \"src/**/*.ts\" --fix",
+    "type-check": "tsc --noEmit",
+    "test": "jest",
+    "test:dev": "jest --watch --no-coverage",
+    "test:no-coverage": "jest --no-coverage",
+    "rollup": "rollup -c"
   },
   "repository": {
     "type": "git",
@@ -25,11 +30,15 @@
   ],
   "devDependencies": {
     "@babel/core": "^7.7.4",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.7.4",
     "@babel/plugin-transform-modules-commonjs": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
     "@babel/preset-typescript": "^7.7.4",
+    "@types/jest": "^24.0.23",
     "@typescript-eslint/eslint-plugin": "^2.8.0",
     "@typescript-eslint/parser": "^2.8.0",
+    "babel-jest": "^24.9.0",
     "eslint": "^6.7.0",
     "eslint-config-prettier": "^6.7.0",
     "eslint-config-standard": "^14.1.0",
@@ -41,11 +50,15 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "husky": "^3.1.0",
+    "jest": "^24.9.0",
     "lint-staged": "^9.4.3",
+    "npm-run-all": "^4.1.5",
     "prettier": "^1.19.1",
+    "rimraf": "^3.0.0",
     "rollup": "^1.27.4",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-node-resolve": "^5.2.0",
+    "tslib": "^1.10.0",
     "typescript": "^3.7.2"
   },
   "lint-staged": {
@@ -56,7 +69,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run build"
     }
   },
   "author": "kotatu <yamamichi1995@outlook.jp> (https://github.com/aclearworld)",

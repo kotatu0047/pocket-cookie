@@ -9,6 +9,9 @@
       "esnext"
     ],
     "outDir": "./dist",
+    "noEmit": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
     "allowJs": false,
     "noEmitOnError": true,
     "allowSyntheticDefaultImports": true,

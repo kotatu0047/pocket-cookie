@@ -1,19 +1,5 @@
-type obj = {
-  _a: string
-  _b: string
-}
-
-const say = (a: string, b: string): void => {
-  const obj: obj = {
-    _a: a,
-    _b: b,
-  }
-
-  const { _a, _b } = obj
-  const { ...clone } = obj
-
-  console.log(_a, _b)
-  console.log(clone)
+const say = (a: string): string => {
+  return `hello${a}`
 }
 
 export default say
