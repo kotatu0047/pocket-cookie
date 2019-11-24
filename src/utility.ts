@@ -1,5 +1,3 @@
-// TODO testing
-
 export const decode = (s: string): string => {
   return s.replace(/(%[\dA-F]{2})+/gi, decodeURIComponent)
 }
@@ -11,6 +9,7 @@ type keyValuePair = {
 
 export const getKeyValuePairsFromCookie = (): keyValuePair[] => {
   const cookies = document.cookie.split('; ')
+  if (cookies.length === 1 && cookies[0] === '') return []
 
   return cookies.map(cookie => {
     const parts = cookie.split('=')
