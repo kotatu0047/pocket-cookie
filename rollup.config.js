@@ -6,7 +6,7 @@ const extensions = ['.ts']
 
 export default [
   {
-    input: 'src/main.ts',
+    input: 'src/pocket-cookie.ts',
     output: {
       file: pkg.module,
       format: 'esm',
