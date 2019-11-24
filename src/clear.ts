@@ -1,9 +1,7 @@
 import { getKeyValuePairsFromCookie } from './utility'
 
-// TODO testing
-
 /**
- * cannot clear HttpOnly flag set cookies and Path set cookies
+ * cannot clear HttpOnly flag set cookies and path set cookies
  */
 const clearAll = (): void => {
   const keyValuePairs = getKeyValuePairsFromCookie()
