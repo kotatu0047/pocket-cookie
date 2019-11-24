@@ -1,10 +1,9 @@
-import _ from 'lodash'
 import moment from 'moment'
 import { isObject } from './utility'
 
 export const isConvertibleToNumber = (s: string): boolean => {
   if (!s) return false
-  const toNumber = _.toNumber(s)
+  const toNumber = Number(s)
 
   return !Number.isNaN(toNumber)
 }
