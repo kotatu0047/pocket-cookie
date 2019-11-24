@@ -72,6 +72,11 @@ get cookie and auto type cast api
     document.cookie = 'bool=true'
     const bool = cookie.getWithAutoCast('bool')  // => bool === true and typeof bool === 'boolean'
 
+    // parsable date format pattern is moment.js default parsable pattern
+    // more details => https://momentjs.com/docs/#/parsing/string/
+    document.cookie = 'date=2013-02-08T09'
+    const date = cookie.getWithAutoCast('date')  // => date.toUTCString() === "Fri, 08 Feb 2013 00:00:00 GMT" and (date instanceof Date) === true
+
     document.cookie = 'arr=[{ "str" : "foo" } , { "str" : "bar" }]'
     const arr = cookie.getWithAutoCast('arr')  // => arr === [{ str : "foo" } , { str : "bar" }] and Array.isArray(arr) === true
 

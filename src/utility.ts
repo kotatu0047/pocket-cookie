@@ -19,3 +19,12 @@ export const getKeyValuePairsFromCookie = (): keyValuePair[] => {
     return { key: parts[0], value: parts.slice(1).join('=') }
   })
 }
+
+export const isObject = (value: object): boolean =>
+  typeof value === 'object' &&
+  value !== null &&
+  value !== undefined &&
+  !Array.isArray(value) &&
+  !(value instanceof RegExp) &&
+  !(value instanceof Error) &&
+  !(value instanceof Date)
