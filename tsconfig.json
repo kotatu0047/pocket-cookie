@@ -8,9 +8,10 @@
       "dom.iterable",
       "esnext"
     ],
+    "declaration": true,
     "outDir": "./dist",
-    "noEmit": true,
-    "isolatedModules": true,
+    "noEmit": false,
+    "isolatedModules": false,
     "esModuleInterop": true,
     "allowJs": false,
     "noEmitOnError": true,

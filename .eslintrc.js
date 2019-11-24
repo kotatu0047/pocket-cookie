@@ -30,7 +30,7 @@ module.exports = {
     "no-undef": "off",
     "space-before-function-paren": "error",
     'newline-before-return': 'error',
-    'no-console': 'warn',
+    'no-console': 'off',
     'require-yield': 'error',
     'no-unused-vars': 'warn',
     'no-await-in-loop': 'warn',
