@@ -50,7 +50,7 @@ console.log(obj) // => obj === {str:'foo', num:45 , obj:{ bool:true } } and type
 
 document.cookie = 'null=null'
 const nullCookie = cookie.getWithAutoCast('null')
-console.log(nullCookie) // => nullCookie === null and typeof nullCookie === 'object' 😂
+console.log(nullCookie) // => nullCookie === null
 
 document.cookie = 'undefined=undefined'
 const undefinedCookie = cookie.getWithAutoCast('undefined')

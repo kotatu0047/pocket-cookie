@@ -59,6 +59,7 @@ simple get cookie api
 ### getWithAutoCast
 
 get cookie and auto type cast api
+ - Automatically determine the recommended type from the string 
 
 ```javascript
     import cookie from 'pocket-cookie'
@@ -84,7 +85,7 @@ get cookie and auto type cast api
     const obj = cookie.getWithAutoCast('obj')  // => obj === {str:'foo', num:45 , obj:{ bool:true } } and typeof obj === 'object'
 
     document.cookie = 'null=null'
-    const nullCookie = cookie.getWithAutoCast('null')  // => nullCookie === null and typeof nullCookie === 'object' 😂
+    const nullCookie = cookie.getWithAutoCast('null')  // => nullCookie === null
 
     document.cookie = 'undefined=undefined'
     const undefinedCookie = cookie.getWithAutoCast('undefined')  // => undefinedCookie === undefined and typeof undefinedCookie === 'undefined'
