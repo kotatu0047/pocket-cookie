@@ -8,6 +8,8 @@ type keyValuePair = {
 }
 
 export const getKeyValuePairsFromCookie = (): keyValuePair[] => {
+  if (typeof document === 'undefined' || !document.cookie) return []
+
   const cookies = document.cookie.split('; ')
   if (cookies.length === 1 && cookies[0] === '') return []
 

@@ -3,8 +3,9 @@
 A JavaScript cookie library
 
  - simple api
- - typescript support
+ - incllude `d.ts`
  - esm
+ - utility api (getKeyValuePairs)
 
 ## installation
 
@@ -30,6 +31,8 @@ import cookie from 'pocket-cookie'
 
 ### get Cookie
 
+simple get api
+
 ```javascript
     import cookie from 'pocket-cookie'
 
@@ -50,6 +53,27 @@ import cookie from 'pocket-cookie'
 
     //not exist cookie return null
     cookie.get('notExist')  // =>  null
+```
+
+### getKeyValuePairs
+
+all cookies to object KeyValuePair
+
+```javascript
+    import cookie from 'pocket-cookie'
+
+    document.cookie = 'foo=bar'
+    cookie.getKeyValuePairs()  // =>  [{ key: 'foo', value: 'bar' }]
+
+    cookie.clearAll()
+
+    document.cookie = 'foo=bar'
+    document.cookie = 'baz=qux'
+    cookie.getKeyValuePairs()  // =>  [{ key: 'foo', value: 'bar' },{ key: 'baz', value: 'qux' }]
+
+    // return empty array on cookie is empty
+    cookie.clearAll()
+    cookie.getKeyValuePairs()  // =>  []
 ```
 
 ### clearAll Cookie
