@@ -1,4 +1,9 @@
+import moment from 'moment'
 import {
+  convertToArray,
+  convertToBool,
+  convertToDate,
+  convertToObject,
   isConvertibleToArray,
   isConvertibleToBool,
   isConvertibleToDate,
@@ -202,5 +207,54 @@ describe('isConvertibleToUndefined()', () => {
 
   test('isConvertibleToUndefined return false on pass empty string', () => {
     expect(isConvertibleToUndefined('')).toBe(false)
+  })
+})
+
+describe('convertToBool()', () => {
+  test('convertToBool return true on pass "true"', () => {
+    expect(convertToBool('true')).toBe(true)
+  })
+
+  test('convertToBool return false on pass "false"', () => {
+    expect(convertToBool('false')).toBe(false)
+  })
+})
+
+describe('convertToDate()', () => {
+  momentConvertiblePatterns.forEach(pattern => {
+    test(`convertToDate return Date on pass "${pattern}"`, () => {
+      expect(convertToDate(pattern).toUTCString()).toBe(
+        moment(pattern)
+          .toDate()
+          .toUTCString(),
+      )
+    })
+  })
+})
+
+describe('convertToArray()', () => {
+  test('convertToArray return array on pass "[ 123 , "foo" , true , null]"', () => {
+    expect(convertToArray('[ 123 , "foo" , true , null]')).toStrictEqual([
+      123,
+      'foo',
+      true,
+      null,
+    ])
+  })
+
+  test('convertToArray return array on pass "[{ "str" : "foo" } , { "str" : "bar" }]"', () => {
+    expect(
+      convertToArray('[{ "str" : "foo" } , { "str" : "bar" }]'),
+    ).toStrictEqual([{ str: 'foo' }, { str: 'bar' }])
+  })
+})
+
+describe('convertToObject()', () => {
+  test('convertToObject return true on pass "{ "str" : "foo", "num" : 45 , "obj" : { "bool" : true } }"', () => {
+    expect(
+      convertToObject(
+        '{ "str" : "foo", "num" : 45, "obj" : { "bool" : true } }',
+      ),
+    ).toStrictEqual({ str: 'foo', num: 45, obj: { bool: true } })
   })
 })

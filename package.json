@@ -9,9 +9,9 @@
   "type": "module",
   "private": false,
   "scripts": {
-    "build": "npm run prebuild && npm-run-all --parallel lint:fix type-check test:no-coverage rollup",
+    "build": "npm run prebuild && npm-run-all --parallel lint:fix type-check test:no-coverage rollup && rm ./dist/*.test.d.ts",
     "prebuild": "rimraf dist",
-    "lint:fix": "eslint --ext ./ --ignore-pattern \"src/**/*.test.ts\" \"src/**/*.ts\"  --fix",
+    "lint:fix": "eslint --ext ./ \"src/**/*.ts\"  --fix",
     "type-check": "tsc --emitDeclarationOnly",
     "test": "jest",
     "test:dev": "jest --watch --no-coverage",

@@ -21,6 +21,7 @@ export const isConvertibleToDate = (s: string): boolean => {
   return moment(s).isValid()
 }
 
+// TODO generic
 export const isConvertibleToArray = (s: string): boolean => {
   if (!s) return false
 
@@ -34,6 +35,7 @@ export const isConvertibleToArray = (s: string): boolean => {
   return Array.isArray(toArray)
 }
 
+// TODO generic
 export const isConvertibleToObject = (s: string): boolean => {
   if (!s) return false
 
