@@ -90,4 +90,22 @@ describe('get()', () => {
 
     expect(get('value')).toBe('[object Object]')
   })
+
+  test('value "0"', () => {
+    document.cookie = 'value=0'
+
+    expect(get('value')).toBe('0')
+  })
+
+  test('value "null"', () => {
+    document.cookie = 'value=null'
+
+    expect(get('value')).toBe('null')
+  })
+
+  test('value "undefined"', () => {
+    document.cookie = 'value=undefined'
+
+    expect(get('value')).toBe('undefined')
+  })
 })
