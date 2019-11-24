@@ -2,10 +2,11 @@
 
 A JavaScript cookie library
 
- - simple api
- - incllude `d.ts`
+ - simple api ([get](#get))
+ - support auto type cast api ([getWithAutoCast](#getwithautocast))
+ - includes `d.ts`
  - esm
- - utility api (getKeyValuePairs)
+ - utility api ([getKeyValuePairs](#getKeyValuePairs))
 
 ## installation
 
@@ -29,9 +30,9 @@ import cookie from 'pocket-cookie'
 
 ## Basic Usage
 
-### get Cookie
+### get
 
-simple get api
+simple get cookie api
 
 ```javascript
     import cookie from 'pocket-cookie'
@@ -53,6 +54,38 @@ simple get api
 
     //not exist cookie return null
     cookie.get('notExist')  // =>  null
+```
+
+### getWithAutoCast
+
+get cookie and auto type cast api
+
+```javascript
+    import cookie from 'pocket-cookie'
+
+    document.cookie = 'foo=bar'
+    const foo = cookie.getWithAutoCast('foo')  // => foo === "bar" and typeof foo === 'string'
+
+    document.cookie = 'number=123.45'
+    const number = cookie.getWithAutoCast('number')  // => number === 123.45 and typeof number === 'number'
+
+    document.cookie = 'bool=true'
+    const bool = cookie.getWithAutoCast('bool')  // => bool === true and typeof bool === 'boolean'
+
+    document.cookie = 'arr=[{ "str" : "foo" } , { "str" : "bar" }]'
+    const arr = cookie.getWithAutoCast('arr')  // => arr === [{ str : "foo" } , { str : "bar" }] and Array.isArray(arr) === true
+
+    document.cookie = 'obj={ "str" : "foo", "num" : 45 , "obj" : { "bool" : true } }'
+    const obj = cookie.getWithAutoCast('obj')  // => obj === {str:'foo', num:45 , obj:{ bool:true } } and typeof obj === 'object'
+
+    document.cookie = 'null=null'
+    const nullCookie = cookie.getWithAutoCast('null')  // => nullCookie === null and typeof nullCookie === 'object' 😂
+
+    document.cookie = 'undefined=undefined'
+    const undefinedCookie = cookie.getWithAutoCast('undefined')  // => undefinedCookie === undefined and typeof undefinedCookie === 'undefined'
+
+    //not exist cookie return null
+    cookie.getWithAutoCast('notExist')  // =>  null
 ```
 
 ### getKeyValuePairs
@@ -96,3 +129,24 @@ cannot clear HttpOnly flag set cookies and path set cookies
     cookie.clearAll()
     console.log(document.cookie)   // =>  "foo=bar"
 ```
+
+## development
+
+```bash
+$ git clone https://github.com/aclearworld/pocket-cookie.git
+$ cd pocket-cookie
+$ npm ci
+$ npm run build
+```
+
+## this library using any awesome tools
+
+ - rollup
+ - jest
+ - babel
+ - TypeScript
+ - eslint
+ - husky
+ - prettier
+
+thanks developers
