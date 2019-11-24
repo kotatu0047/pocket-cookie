@@ -181,30 +181,29 @@ describe('convertToDate()', () => {
 })
 
 describe('convertToArray()', () => {
-  test('convertToArray return array on pass "[ 123 , "foo" , true , null]"', () => {
-    expect(convertToArray('[ 123 , "foo" , true , null]')).toStrictEqual([
-      123,
-      'foo',
-      true,
-      null,
-    ])
+  test('convertToArray return array on pass "[ 123 , 45 , 147.56 , -147.56]"', () => {
+    expect(
+      convertToArray<number>('[ 123 , 45 , 147.56 , -147.56]'),
+    ).toStrictEqual([123, 45, 147.56, -147.56])
   })
 
   test('convertToArray return array on pass "[{ "str" : "foo" } , { "str" : "bar" }]"', () => {
     expect(
-      convertToArray('[{ "str" : "foo" } , { "str" : "bar" }]'),
+      convertToArray<{ str: string }>(
+        '[{ "str" : "foo" } , { "str" : "bar" }]',
+      ),
     ).toStrictEqual([{ str: 'foo' }, { str: 'bar' }])
   })
 })
 
 describe('convertToObject()', () => {
   test('convertToObject return {} on pass "{}"', () => {
-    expect(convertToObject('{}')).toStrictEqual({})
+    expect(convertToObject<{}>('{}')).toStrictEqual({})
   })
 
   test('convertToObject return object on pass "{ "str" : "foo", "num" : 45 , "obj" : { "bool" : true } }"', () => {
     expect(
-      convertToObject(
+      convertToObject<{ str: string; num: number; obj: { bool: boolean } }>(
         '{ "str" : "foo", "num" : 45, "obj" : { "bool" : true } }',
       ),
     ).toStrictEqual({ str: 'foo', num: 45, obj: { bool: true } })

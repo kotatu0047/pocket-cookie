@@ -20,7 +20,6 @@ export const isConvertibleToDate = (s: string): boolean => {
   return moment(s).isValid()
 }
 
-// TODO generic
 export const isConvertibleToArray = (s: string): boolean => {
   if (!s) return false
 
@@ -34,7 +33,6 @@ export const isConvertibleToArray = (s: string): boolean => {
   return Array.isArray(toArray)
 }
 
-// TODO generic
 export const isConvertibleToObject = (s: string): boolean => {
   if (!s) return false
 
@@ -68,12 +66,10 @@ export const convertToDate = (s: string): Date => {
   return moment(s).toDate()
 }
 
-// TODO generic
-export const convertToArray = (s: string): Array<any> => {
-  return JSON.parse(s) as Array<any>
+export const convertToArray = <T>(s: string): Array<T> => {
+  return JSON.parse(s) as Array<T>
 }
 
-// TODO generic
-export const convertToObject = (s: string): object => {
-  return JSON.parse(s) as object
+export const convertToObject = <T extends object>(s: string): T => {
+  return JSON.parse(s) as T
 }

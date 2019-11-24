@@ -44,21 +44,22 @@ export const get = (key: string): string | null => {
   return result
 }
 
-// TODO generic
-type getWithAutoCastResult =
+type getWithAutoCastResult<T1, T2 extends object> =
   | string
   | number
   | boolean
   | Date
-  | Array<any>
-  | object
+  | Array<T1>
+  | T2
   | null
   | undefined
 
 /**
  * priority to date over number
  */
-export const getWithAutoCast = (key: string): getWithAutoCastResult => {
+export const getWithAutoCast = <T1, T2 extends object>(
+  key: string,
+): getWithAutoCastResult<T1, T2> => {
   const value = get(key)
   if (value === null) return null
 
@@ -67,8 +68,8 @@ export const getWithAutoCast = (key: string): getWithAutoCastResult => {
   if (isConvertibleToNumber(value)) return Number(value)
   if (isConvertibleToBool(value)) return convertToBool(value)
   if (isConvertibleToDate(value)) return convertToDate(value)
-  if (isConvertibleToArray(value)) return convertToArray(value)
-  if (isConvertibleToObject(value)) return convertToObject(value)
+  if (isConvertibleToArray(value)) return convertToArray<T1>(value)
+  if (isConvertibleToObject(value)) return convertToObject<T2>(value)
 
   return value
 }

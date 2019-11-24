@@ -201,16 +201,21 @@ describe('getWithAutoCast()', () => {
     })
   })
 
-  test('getWithAutoCast return array on value is "[ 123 , "foo" , true , null]"', () => {
-    document.cookie = 'value=[ 123 , "foo" , true , null]'
+  test('getWithAutoCast return array on value is "[ 123 , 45 , 147.56 , -147.56]"', () => {
+    document.cookie = 'value=[ 123 , 45 , 147.56 , -147.56]'
 
-    expect(getWithAutoCast('value')).toStrictEqual([123, 'foo', true, null])
+    expect(getWithAutoCast<number, object>('value')).toStrictEqual([
+      123,
+      45,
+      147.56,
+      -147.56,
+    ])
   })
 
   test('getWithAutoCast return array on value is "[{ "str" : "foo" } , { "str" : "bar" }]"', () => {
     document.cookie = 'value=[{ "str" : "foo" } , { "str" : "bar" }]'
 
-    expect(getWithAutoCast('value')).toStrictEqual([
+    expect(getWithAutoCast<{ str: string }, object>('value')).toStrictEqual([
       { str: 'foo' },
       { str: 'bar' },
     ])
@@ -219,14 +224,19 @@ describe('getWithAutoCast()', () => {
   test('getWithAutoCast return {} on value is "{}"', () => {
     document.cookie = 'value={}'
 
-    expect(getWithAutoCast('value')).toStrictEqual({})
+    expect(getWithAutoCast<undefined, {}>('value')).toStrictEqual({})
   })
 
   test('getWithAutoCast return object on value is "{ "str" : "foo", "num" : 45 , "obj" : { "bool" : true } }"', () => {
     document.cookie =
       'value={ "str" : "foo", "num" : 45, "obj" : { "bool" : true } }'
 
-    expect(getWithAutoCast('value')).toStrictEqual({
+    expect(
+      getWithAutoCast<
+        undefined,
+        { str: string; num: number; obj: { bool: boolean } }
+      >('value'),
+    ).toStrictEqual({
       str: 'foo',
       num: 45,
       obj: { bool: true },
