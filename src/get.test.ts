@@ -63,10 +63,29 @@ test('RFC 6265 - reading cookie-octet enclosed in DQUOTE', () => {
   expect(get('c')).toBe('v')
 })
 
+test('Call to read cookie when there is another cookie', () => {
+  document.cookie = 'foo=bar'
+  document.cookie = 'c=v'
+
+  expect(get('c')).toBe('v')
+})
+
 test('Call to read cookie when there is another unrelated cookie with malformed encoding in the name', () => {
   document.cookie = '%A1=foo'
   document.cookie = 'c=v'
-  console.log(document.cookie)
 
   expect(get('c')).toBe('v')
+})
+
+test('Call to read cookie when there is another unrelated cookie with malformed encoding in the value', () => {
+  document.cookie = 'invalid=%A1'
+  document.cookie = 'c=v'
+
+  expect(get('c')).toBe('v')
+})
+
+test('value "[object Object]"', () => {
+  document.cookie = 'value=[object Object]'
+
+  expect(get('value')).toBe('[object Object]')
 })
