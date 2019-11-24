@@ -2,8 +2,9 @@
   "name": "pocket-cookie",
   "version": "0.0.1-beta",
   "description": "a JavaScript cookie library",
-  "module": "dist/pocket-cookie.js",
   "main": "dist/pocket-cookie.js",
+  "browser": "dist/pocket-cookie.js",
+  "module": "dist/pocket-cookie.js",
   "types": "dist/pocket-cookie.d.ts",
   "type": "module",
   "private": false,
@@ -38,6 +39,7 @@
     "@babel/preset-env": "^7.7.4",
     "@babel/preset-typescript": "^7.7.4",
     "@types/jest": "^24.0.23",
+    "@types/lodash": "^4.14.149",
     "@typescript-eslint/eslint-plugin": "^2.8.0",
     "@typescript-eslint/parser": "^2.8.0",
     "babel-jest": "^24.9.0",
@@ -61,6 +63,10 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "tslib": "^1.10.0",
     "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0"
   },
   "husky": {
     "hooks": {

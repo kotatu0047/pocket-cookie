@@ -1,4 +1,4 @@
-import { decode, getKeyValuePairsFromCookie } from './utility'
+import { decode, getKeyValuePairsFromCookie, isObject } from './utility'
 import clearAll from './clear'
 
 describe('decode()', () => {
@@ -66,5 +66,27 @@ describe('getKeyValuePairsFromCookie()', () => {
       { key: 'foo', value: 'bar' },
       { key: 'c', value: 'v' },
     ])
+  })
+})
+
+describe('isObject()', () => {
+  test('isObject return true on pass {}', () => {
+    expect(isObject({})).toBe(true)
+  })
+
+  test('isObject return false on pass RegExp', () => {
+    expect(isObject(new RegExp(/foo/))).toBe(false)
+  })
+
+  test('isObject return false on pass Error', () => {
+    expect(isObject(new Error())).toBe(false)
+  })
+
+  test('isObject return false on pass Date', () => {
+    expect(isObject(new Date())).toBe(false)
+  })
+
+  test('isObject return false on pass Array', () => {
+    expect(isObject([])).toBe(false)
   })
 })
