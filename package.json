@@ -11,7 +11,7 @@
   "scripts": {
     "build": "npm run prebuild && npm-run-all --parallel lint:fix type-check test:no-coverage rollup",
     "prebuild": "rimraf dist",
-    "lint:fix": "eslint --ext ./ \"src/**/*.ts\" --ignore-pattern \"src/**/*.test.ts\" --fix",
+    "lint:fix": "eslint --ext ./ --ignore-pattern \"src/**/*.test.ts\" \"src/**/*.ts\"  --fix",
     "type-check": "tsc --emitDeclarationOnly",
     "test": "jest",
     "test:dev": "jest --watch --no-coverage",
