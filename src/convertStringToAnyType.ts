@@ -58,3 +58,21 @@ export const isConvertibleToUndefined = (s: string): boolean => {
 
   return s === 'undefined'
 }
+
+export const convertToBool = (s: string): boolean => {
+  return s === 'true'
+}
+
+export const convertToDate = (s: string): Date => {
+  return moment(s).toDate()
+}
+
+// TODO generic
+export const convertToArray = (s: string): Array<any> => {
+  return JSON.parse(s) as Array<any>
+}
+
+// TODO generic
+export const convertToObject = (s: string): object => {
+  return JSON.parse(s) as object
+}
