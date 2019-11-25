@@ -33,14 +33,14 @@ const createStringAttribute = (attributes: CookieAttributes) => {
         : new Date(Date.now() + attributes.expires * millisecondsOfOneDay)
     expires = expiresDate.toUTCString()
   }
-  const path = attributes.path !== undefined ? attributes.path : ''
-  const domain = attributes.domain !== undefined ? attributes.domain : ''
-  const isSecure = attributes.secure !== undefined ? attributes.secure : false
+  const path = attributes.path || ''
+  const domain = attributes.domain || ''
+  const isSecure = attributes.secure || false
   const maxAge =
     attributes.maxAge !== undefined
       ? `${attributes.maxAge * secondsOfOneDay}`
       : ''
-  const samesite = attributes.samesite !== undefined ? attributes.samesite : ''
+  const samesite = attributes.samesite || ''
 
   stringAttributes +=
     expires || path || domain || isSecure || maxAge || samesite ? '; ' : ''
@@ -57,7 +57,7 @@ const createStringAttribute = (attributes: CookieAttributes) => {
     ? `${nameof<CookieAttributes>(o => o.secure)}; `
     : ''
   // cannot naming CookieAttributes.max-age
-  stringAttributes += maxAge ? `${'max-age' + '='}${maxAge}; ` : ''
+  stringAttributes += maxAge ? `max-age=${maxAge}; ` : ''
   stringAttributes += samesite
     ? `${nameof<CookieAttributes>(o => o.samesite)}=${samesite}; `
     : ''
