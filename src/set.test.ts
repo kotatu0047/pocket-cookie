@@ -115,3 +115,59 @@ describe('set() with cookieAttributes', () => {
     ).toBe(`foo=bar; ${expected}`)
   })
 })
+
+describe('set() set cookie of stringify value', () => {
+  beforeEach(() => {
+    clearAll()
+  })
+
+  afterEach(() => {
+    clearAll()
+  })
+
+  test('set string value', () => {
+    set('v', 'str')
+    expect(get('v')).toBe('str')
+  })
+
+  test('set number value', () => {
+    set('v', 123.45)
+    expect(get('v')).toBe('123.45')
+  })
+
+  test('set boolean value', () => {
+    set('t', true)
+    expect(get('t')).toBe('true')
+    set('f', false)
+    expect(get('f')).toBe('false')
+  })
+
+  test('set Date value', () => {
+    const date = new Date()
+    set('v', date)
+    expect(get('v')).toBe(date.toUTCString())
+  })
+
+  test('set array value', () => {
+    const arr = [123.45, -45878, 1245, 0.3654]
+    set('v', arr)
+    expect(get('v')).toBe('[123.45,-45878,1245,0.3654]')
+  })
+
+  test('set object value', () => {
+    set('obj1', {})
+    expect(get('obj1')).toBe('{}')
+    set('obj2', { foo: 'bar', baz: 987 })
+    expect(get('obj2')).toBe('{"foo":"bar","baz":987}')
+  })
+
+  test('set null value', () => {
+    set('v', null)
+    expect(get('v')).toBe('null')
+  })
+
+  test('set null undefined', () => {
+    set('v', undefined)
+    expect(get('v')).toBe('undefined')
+  })
+})

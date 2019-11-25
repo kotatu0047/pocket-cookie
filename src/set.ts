@@ -67,9 +67,9 @@ const createStringAttribute = (attributes: CookieAttributes) => {
 }
 
 // TODO percent encode
-const set = <T1, T2 extends object>(
+const set = (
   key: string,
-  value: autoCast<T1, T2>,
+  value: autoCast<any, {}>,
   attributes?: CookieAttributes,
 ): string => {
   if (typeof document === 'undefined') {
