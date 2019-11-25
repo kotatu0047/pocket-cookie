@@ -1,4 +1,5 @@
 import { autoCast } from './commonTypes'
+import { is } from './utility'
 
 const secondsOfOneDay = 864e2
 const millisecondsOfOneDay = 864e5
@@ -65,7 +66,7 @@ const createStringAttribute = (attributes: CookieAttributes) => {
   return stringAttributes
 }
 
-// TODO percent encode autoCast
+// TODO percent encode
 const set = <T1, T2 extends object>(
   key: string,
   value: autoCast<T1, T2>,
@@ -79,7 +80,16 @@ const set = <T1, T2 extends object>(
   if (attributes !== undefined)
     stringAttributes = createStringAttribute(attributes)
 
-  return (document.cookie = `${key}=${value}${stringAttributes}`)
+  let cookieValue = ''
+  if (is.date(value)) {
+    cookieValue = value.toUTCString()
+  } else if (is.arr(value) || is.obj(value)) {
+    cookieValue = JSON.stringify(value)
+  } else {
+    cookieValue = `${value}`
+  }
+
+  return (document.cookie = `${key}=${cookieValue}${stringAttributes}`)
 }
 
 export default set
