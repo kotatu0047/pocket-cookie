@@ -90,7 +90,7 @@ const dt = new Date('1999-12-31T23:59:59Z') // past dateTime
 
 document.cookie = 'a=b'
 console.log(document.cookie)
-document.cookie = 'a=; expires=' + dt.toUTCString() + '; '
+document.cookie = `a=; expires=${dt.toUTCString()}; `
 console.log(document.cookie)
 
 document.cookie = 'c=d'
@@ -103,7 +103,7 @@ console.log(document.cookie)
 cookie.clearAll() // fail!
 console.log(document.cookie)
 
-document.cookie = 'e=; path=/index.html; expires=' + dt.toUTCString() + '; '
+document.cookie = `e=; path=/index.html; expires=${dt.toUTCString()}; `
 console.log(document.cookie) // removed!
 
 cookie.set('foo', 'bar', {
@@ -116,5 +116,5 @@ cookie.set('foo', 'bar', {
 })
 console.log(cookie.get('foo'))
 
-document.cookie = 'foo=; path=/index.html; expires=' + dt.toUTCString() + '; '
+document.cookie = `foo=; path=/index.html; expires=${dt.toUTCString()}; `
 console.log(document.cookie) // removed!

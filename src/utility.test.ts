@@ -1,4 +1,4 @@
-import { decode, getKeyValuePairsFromCookie, isObject } from './utility'
+import { decode, getKeyValuePairsFromCookie, is } from './utility'
 import clearAll from './clear'
 
 describe('decode()', () => {
@@ -69,24 +69,61 @@ describe('getKeyValuePairsFromCookie()', () => {
   })
 })
 
-describe('isObject()', () => {
-  test('isObject return true on pass {}', () => {
-    expect(isObject({})).toBe(true)
-  })
+const allTypes: any[] = [
+  'str',
+  123.45,
+  true,
+  new Date(),
+  [],
+  {},
+  null,
+  undefined,
+]
 
-  test('isObject return false on pass RegExp', () => {
-    expect(isObject(new RegExp(/foo/))).toBe(false)
+describe('is.obj()', () => {
+  allTypes.forEach(value => {
+    if (
+      value !== null &&
+      typeof value === 'object' &&
+      !is.date(value) &&
+      !is.arr(value)
+    ) {
+      test('is.obj return true on pass {}', () => {
+        expect(is.obj(value)).toBe(true)
+      })
+    } else {
+      test('is.obj return false on pass not {}', () => {
+        expect(is.obj(value)).toBe(false)
+      })
+    }
   })
+})
 
-  test('isObject return false on pass Error', () => {
-    expect(isObject(new Error())).toBe(false)
+describe('is.date()', () => {
+  allTypes.forEach(value => {
+    if (value instanceof Date) {
+      test('is.date return true on pass Date', () => {
+        console.log(value)
+        expect(is.date(value)).toBe(true)
+      })
+    } else {
+      test('is.date return false on pass not Date', () => {
+        expect(is.date(value)).toBe(false)
+      })
+    }
   })
+})
 
-  test('isObject return false on pass Date', () => {
-    expect(isObject(new Date())).toBe(false)
-  })
-
-  test('isObject return false on pass Array', () => {
-    expect(isObject([])).toBe(false)
+describe('is.arr()', () => {
+  allTypes.forEach(value => {
+    if (Array.isArray(value)) {
+      test('is.arr return true on pass array', () => {
+        expect(is.arr(value)).toBe(true)
+      })
+    } else {
+      test('is.arr return false on pass not array', () => {
+        expect(is.arr(value)).toBe(false)
+      })
+    }
   })
 })

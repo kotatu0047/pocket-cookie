@@ -48,7 +48,7 @@ export const get = (key: string): string | null => {
 /**
  * priority to date over number
  */
-export const getWithAutoCast = <T1, T2 extends object>(
+export const getWithAutoCast = <T1, T2 extends {}>(
   key: string,
 ): autoCast<T1, T2> => {
   const value = get(key)

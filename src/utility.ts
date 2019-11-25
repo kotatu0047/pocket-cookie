@@ -20,11 +20,18 @@ export const getKeyValuePairsFromCookie = (): keyValuePair[] => {
   })
 }
 
-export const isObject = (value: object): boolean =>
-  typeof value === 'object' &&
-  value !== null &&
-  value !== undefined &&
-  !Array.isArray(value) &&
-  !(value instanceof RegExp) &&
-  !(value instanceof Error) &&
-  !(value instanceof Date)
+export const is = {
+  obj: (v: unknown): v is {} => {
+    return (
+      typeof v === 'object' &&
+      v !== null &&
+      v !== undefined &&
+      !Array.isArray(v) &&
+      !(v instanceof RegExp) &&
+      !(v instanceof Error) &&
+      !(v instanceof Date)
+    )
+  },
+  date: (v: unknown): v is Date => v instanceof Date,
+  arr: Array.isArray,
+}
