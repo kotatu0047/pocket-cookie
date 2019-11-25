@@ -32,7 +32,7 @@ import cookie from 'pocket-cookie'
 
 ### get
 
-simple get cookie api
+simple get cookie api return `string` value
 
 ```javascript
     import cookie from 'pocket-cookie'
@@ -59,7 +59,10 @@ simple get cookie api
 ### getWithAutoCast
 
 get cookie and auto type cast api
- - Automatically determine the recommended type from the string 
+ - Automatically determine the recommended type from the string value
+ - support types
+   - `string` `number` `boolean` `Date` `Array` `JSON` `null` `undefined`
+ - **Note** this method is priority to date over number
 
 ```javascript
     import cookie from 'pocket-cookie'
@@ -113,6 +116,17 @@ all cookies to object KeyValuePair
     // return empty array on cookie is empty
     cookie.clearAll()
     cookie.getKeyValuePairs()  // =>  []
+```
+
+keyValuePair type is simple jsonObject
+
+```typescript
+
+type keyValuePair = {
+  key: string
+  value: string
+}
+
 ```
 
 ### clearAll Cookie

@@ -1,3 +1,4 @@
 ## TODO
- - auto type cast 
+ - github actions
  - licenseBanner
+ - usage ts documentation
