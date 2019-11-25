@@ -32,6 +32,7 @@ export default [
         plugins: [
           ['@babel/proposal-class-properties', { loose: true }],
           ['@babel/proposal-object-rest-spread', { loose: true }],
+          ['babel-plugin-ts-nameof', { loose: true }],
         ],
         exclude: 'node_modules/**',
       }),

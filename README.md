@@ -140,7 +140,7 @@ type keyValuePair = {
     console.log(document.cookie)   // =>  ""
 ```
 
-cannot clear HttpOnly flag set cookies and path set cookies
+**Note** cannot clear HttpOnly flag set cookies and path set cookies
 
 ```javascript
     import cookie from 'pocket-cookie'

@@ -12,6 +12,7 @@ import {
   isConvertibleToObject,
   isConvertibleToUndefined,
 } from './convertStringToAnyType'
+import { autoCast } from './commonTypes'
 
 export const get = (key: string): string | null => {
   if (typeof document === 'undefined' || !key || !document.cookie) {
@@ -44,22 +45,12 @@ export const get = (key: string): string | null => {
   return result
 }
 
-type getWithAutoCastResult<T1, T2 extends object> =
-  | string
-  | number
-  | boolean
-  | Date
-  | Array<T1>
-  | T2
-  | null
-  | undefined
-
 /**
  * priority to date over number
  */
 export const getWithAutoCast = <T1, T2 extends object>(
   key: string,
-): getWithAutoCastResult<T1, T2> => {
+): autoCast<T1, T2> => {
   const value = get(key)
   if (value === null) return null
 
