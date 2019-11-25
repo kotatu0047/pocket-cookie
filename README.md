@@ -170,3 +170,7 @@ $ npm run build
  - prettier
 
 thanks developers
+
+## Authors
+
+- [kotatu810](https://github.com/aclearworld)
