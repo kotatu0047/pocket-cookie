@@ -23,14 +23,14 @@ export interface CookieAttributes {
   readonly samesite?: 'strict' | 'lax'
 }
 
-// TODO percent encode autoCast
+// TODO percent encode autoCast  refactoring
 const set = <T1, T2 extends object>(
   key: string,
   value: autoCast<T1, T2>,
   attributes?: CookieAttributes,
-): void => {
+): string => {
   if (typeof document === 'undefined') {
-    return
+    return ''
   }
 
   let stringAttributes = ''
@@ -48,7 +48,7 @@ const set = <T1, T2 extends object>(
     const isSecure = attributes.secure !== undefined ? attributes.secure : false
     const maxAge =
       attributes.maxAge !== undefined
-        ? attributes.maxAge * secondsOfOneDay + ''
+        ? `${attributes.maxAge * secondsOfOneDay}`
         : ''
     const samesite =
       attributes.samesite !== undefined ? attributes.samesite : ''
@@ -56,33 +56,27 @@ const set = <T1, T2 extends object>(
     stringAttributes +=
       expires || path || domain || isSecure || maxAge || samesite ? '; ' : ''
     stringAttributes += expires
-      ? nameof<CookieAttributes>(o => o.expires) + '=' + expires + '; '
+      ? `${nameof<CookieAttributes>(o => o.expires)}=${expires}; `
       : ''
     stringAttributes += path
-      ? nameof<CookieAttributes>(o => o.path) +
-        '=' +
-        removeSemicolon(path) +
-        '; '
+      ? `${nameof<CookieAttributes>(o => o.path)}=${removeSemicolon(path)}; `
       : ''
     stringAttributes += domain
-      ? nameof<CookieAttributes>(o => o.domain) +
-        '=' +
-        removeSemicolon(domain) +
-        '; '
+      ? `${nameof<CookieAttributes>(o => o.domain)}=${removeSemicolon(
+          domain,
+        )}; `
       : ''
     stringAttributes += isSecure
-      ? nameof<CookieAttributes>(o => o.secure) + '; '
+      ? `${nameof<CookieAttributes>(o => o.secure)}; `
       : ''
     // cannot naming CookieAttributes.max-age
-    stringAttributes += maxAge ? 'max-age' + '=' + maxAge + '; ' : ''
+    stringAttributes += maxAge ? `${'max-age' + '='}${maxAge}; ` : ''
     stringAttributes += samesite
-      ? nameof<CookieAttributes>(o => o.samesite) + '=' + samesite + '; '
+      ? `${nameof<CookieAttributes>(o => o.samesite)}=${samesite}; `
       : ''
   }
 
-  // console.log(stringAttributes)
-
-  document.cookie = key + '=' + value + stringAttributes
+  return (document.cookie = `${key}=${value}${stringAttributes}`)
 }
 
 export default set

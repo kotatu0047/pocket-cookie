@@ -26,6 +26,8 @@ module.exports = {
     },
   },
   rules: {
+    'prefer-template': 'error',
+
     // eslint official
     "no-undef": "off",
     "space-before-function-paren": "error",
