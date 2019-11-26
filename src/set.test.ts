@@ -11,9 +11,13 @@ describe('set()', () => {
     clearAll()
   })
 
+  test('set empty value', () => {
+    set('foo', '')
+    expect(get('foo')).toBe('')
+  })
+
   test('set simple value', () => {
     set('foo', 'bar')
-
     expect(get('foo')).toBe('bar')
   })
 
