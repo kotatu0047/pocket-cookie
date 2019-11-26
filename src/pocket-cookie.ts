@@ -1,11 +1,11 @@
-// const set = (name: string, value: string): void => {}
-
 import { get, getWithAutoCast } from './get'
-import clearAll from './clear'
 import { getKeyValuePairsFromCookie } from './utility'
+import set from './set'
+import clearAll from './clear'
 
 const api = {
   get,
+  set,
   getWithAutoCast,
   clearAll,
   getKeyValuePairs: getKeyValuePairsFromCookie,

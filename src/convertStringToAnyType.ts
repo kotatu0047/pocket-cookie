@@ -1,5 +1,5 @@
 import moment from 'moment'
-import { isObject } from './utility'
+import { is } from './utility'
 
 export const isConvertibleToNumber = (s: string): boolean => {
   if (!s) return false
@@ -30,7 +30,7 @@ export const isConvertibleToArray = (s: string): boolean => {
     return false
   }
 
-  return Array.isArray(toArray)
+  return is.arr(toArray)
 }
 
 export const isConvertibleToObject = (s: string): boolean => {
@@ -43,7 +43,7 @@ export const isConvertibleToObject = (s: string): boolean => {
     return false
   }
 
-  return isObject(toObject)
+  return is.obj(toObject)
 }
 
 export const isConvertibleToNull = (s: string): boolean => {
@@ -70,6 +70,6 @@ export const convertToArray = <T>(s: string): Array<T> => {
   return JSON.parse(s) as Array<T>
 }
 
-export const convertToObject = <T extends object>(s: string): T => {
+export const convertToObject = <T extends {}>(s: string): T => {
   return JSON.parse(s) as T
 }
