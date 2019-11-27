@@ -6,7 +6,7 @@ describe('clearAll()', () => {
     document.cookie = 'foo=bar'
     clearAll()
 
-    expect(getKeyValuePairsFromCookie()).toStrictEqual([])
+    expect(getKeyValuePairsFromCookie(false)).toStrictEqual([])
   })
 
   test('clear multiple cookies', () => {
@@ -14,7 +14,7 @@ describe('clearAll()', () => {
     document.cookie = 'c=v'
     clearAll()
 
-    expect(getKeyValuePairsFromCookie()).toStrictEqual([])
+    expect(getKeyValuePairsFromCookie(false)).toStrictEqual([])
   })
 
   // jsDom is can clear Path set cookie

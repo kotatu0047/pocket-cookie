@@ -33,7 +33,7 @@ describe('getKeyValuePairsFromCookie()', () => {
   test('get simple value', () => {
     document.cookie = 'foo=bar'
 
-    expect(getKeyValuePairsFromCookie()).toStrictEqual([
+    expect(getKeyValuePairsFromCookie(false)).toStrictEqual([
       { key: 'foo', value: 'bar' },
     ])
   })
@@ -41,19 +41,19 @@ describe('getKeyValuePairsFromCookie()', () => {
   test('get empty value', () => {
     document.cookie = 'foo='
 
-    expect(getKeyValuePairsFromCookie()).toStrictEqual([
+    expect(getKeyValuePairsFromCookie(false)).toStrictEqual([
       { key: 'foo', value: '' },
     ])
   })
 
   test('get empty array', () => {
-    expect(getKeyValuePairsFromCookie()).toStrictEqual([])
+    expect(getKeyValuePairsFromCookie(false)).toStrictEqual([])
   })
 
   test('get equality sign in cookie value', () => {
     document.cookie = 'foo=bar=baz'
 
-    expect(getKeyValuePairsFromCookie()).toStrictEqual([
+    expect(getKeyValuePairsFromCookie(false)).toStrictEqual([
       { key: 'foo', value: 'bar=baz' },
     ])
   })
@@ -62,7 +62,7 @@ describe('getKeyValuePairsFromCookie()', () => {
     document.cookie = 'foo=bar'
     document.cookie = 'c=v'
 
-    expect(getKeyValuePairsFromCookie()).toStrictEqual([
+    expect(getKeyValuePairsFromCookie(false)).toStrictEqual([
       { key: 'foo', value: 'bar' },
       { key: 'c', value: 'v' },
     ])

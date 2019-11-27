@@ -11,6 +11,10 @@ describe('get()', () => {
 
   afterEach(() => {
     clearAll()
+
+    //  can not clearAll() is clear a unrelated cookie with malformed encoding in the name
+    const dt = new Date('1999-12-31T23:59:59Z')
+    document.cookie = `%A1=; expires=${dt.toUTCString()}`
   })
 
   test('get simple value', () => {

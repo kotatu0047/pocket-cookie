@@ -19,3 +19,4 @@ jest.config.js
 rollup.config.js
 tsconfig.json
 todo.md
+.github/

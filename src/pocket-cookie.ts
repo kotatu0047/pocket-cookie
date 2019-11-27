@@ -8,7 +8,7 @@ const api = {
   set,
   getWithAutoCast,
   clearAll,
-  getKeyValuePairs: getKeyValuePairsFromCookie,
+  getKeyValuePairs: () => getKeyValuePairsFromCookie(false),
 }
 
 export default api

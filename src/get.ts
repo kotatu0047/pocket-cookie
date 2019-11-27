@@ -1,4 +1,4 @@
-import { decode, getKeyValuePairsFromCookie } from './utility'
+import { getKeyValuePairsFromCookie } from './utility'
 import {
   convertToArray,
   convertToBool,
@@ -19,30 +19,12 @@ export const get = (key: string): string | null => {
     return null
   }
 
-  const keyValuePairs = getKeyValuePairsFromCookie()
-  let result: string | null = null
+  const keyValuePairs = getKeyValuePairsFromCookie(false)
   const find = keyValuePairs.find(keyValuePair => {
-    let name = ''
-
-    try {
-      name = decode(keyValuePair.key)
-    } catch (e) {
-      return false
-    }
-
-    return name === key
+    return keyValuePair.key === key
   })
 
-  try {
-    if (find !== undefined) {
-      result = decode(find.value)
-      result = result.charAt(0) === '"' ? result.slice(1, -1) : result
-    }
-  } catch (e) {
-    console.warn(`Occur Error On Cookie decodeURIComponent`)
-  }
-
-  return result
+  return find ? find.value : null
 }
 
 /**
