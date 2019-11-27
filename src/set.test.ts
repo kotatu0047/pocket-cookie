@@ -26,6 +26,45 @@ describe('set()', () => {
   })
 })
 
+/**
+ * TODO more many tests...
+ * https://github.com/js-cookie/js-cookie/blob/v3.0.0-beta.0/test/encoding.js
+ */
+describe('set() encoding', () => {
+  beforeEach(() => {
+    clearAll()
+  })
+
+  afterEach(() => {
+    clearAll()
+  })
+
+  test('RFC 6265 - character not allowed in the cookie-value " "', () => {
+    set('c', ' ')
+    expect(document.cookie).toBe('c=%20')
+  })
+
+  test('RFC 6265 - character not allowed in the cookie-value ","', () => {
+    set('c', ',')
+    expect(document.cookie).toBe('c=%2C')
+  })
+
+  test('RFC 6265 - character not allowed in the cookie-value ";"', () => {
+    set('c', ';')
+    expect(document.cookie).toBe('c=%3B')
+  })
+
+  test('RFC 6265 - character not allowed in the cookie-value "\\"', () => {
+    set('c', '\\')
+    expect(document.cookie).toBe('c=%5C')
+  })
+
+  test('RFC 6265 - characters not allowed in the cookie-value should be replaced globally', () => {
+    set('c', ';;')
+    expect(document.cookie).toBe('c=%3B%3B')
+  })
+})
+
 describe('set() with cookieAttributes', () => {
   // jsDom is can clear Path set cookie
   beforeEach(() => {
