@@ -1,7 +1,7 @@
 import { get, getWithAutoCast } from './get'
-import { getKeyValuePairsFromCookie } from './utility'
 import set from './set'
 import clearAll from './clear'
+import { getKeyValuePairsFromCookie } from './getKeyValuePairsFromCookie'
 
 const api = {
   get,

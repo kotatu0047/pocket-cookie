@@ -1,4 +1,3 @@
-import { getKeyValuePairsFromCookie } from './utility'
 import {
   convertToArray,
   convertToBool,
@@ -13,6 +12,7 @@ import {
   isConvertibleToUndefined,
 } from './convertStringToAnyType'
 import { autoCast } from './commonTypes'
+import { getKeyValuePairsFromCookie } from './getKeyValuePairsFromCookie'
 
 export const get = (key: string): string | null => {
   if (typeof document === 'undefined' || !key || !document.cookie) {

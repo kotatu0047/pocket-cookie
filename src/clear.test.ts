@@ -1,5 +1,5 @@
-import { getKeyValuePairsFromCookie } from './utility'
 import clearAll from './clear'
+import { getKeyValuePairsFromCookie } from './getKeyValuePairsFromCookie'
 
 describe('clearAll()', () => {
   test('clear simple cookie', () => {

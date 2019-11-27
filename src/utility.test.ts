@@ -1,5 +1,9 @@
-import { decode, getKeyValuePairsFromCookie, is } from './utility'
+import { is } from './utility'
 import clearAll from './clear'
+import {
+  decode,
+  getKeyValuePairsFromCookie,
+} from './getKeyValuePairsFromCookie'
 
 describe('decode()', () => {
   test('decode on value in include percent', () => {

@@ -1,4 +1,4 @@
-import { getKeyValuePairsFromCookie } from './utility'
+import { getKeyValuePairsFromCookie } from './getKeyValuePairsFromCookie'
 
 /**
  * cannot clear HttpOnly flag set cookies and path set cookies
