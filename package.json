@@ -1,6 +1,6 @@
 {
   "name": "pocket-cookie",
-  "version": "0.0.3-beta",
+  "version": "0.0.4",
   "description": "a JavaScript cookie library",
   "main": "dist/pocket-cookie.js",
   "browser": "dist/pocket-cookie.js",
