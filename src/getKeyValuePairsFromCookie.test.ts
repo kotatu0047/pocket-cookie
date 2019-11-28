@@ -2,7 +2,7 @@ import {
   decode,
   getKeyValuePairsFromCookie,
 } from './getKeyValuePairsFromCookie'
-import clearAll from './clear'
+import { clearAll } from './clear'
 
 describe('decode()', () => {
   test('decode on value in include percent', () => {

@@ -1,6 +1,6 @@
 import moment from 'moment'
 import { get, getWithAutoCast } from './get'
-import clearAll from './clear'
+import { clearAll } from './clear'
 import { momentConvertiblePatterns } from './testCommon'
 import { isConvertibleToNumber } from './convertStringToAnyType'
 
