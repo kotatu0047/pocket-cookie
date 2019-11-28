@@ -21,6 +21,6 @@
     "webpack-cli": "^3.3.9"
   },
   "dependencies": {
-    "pocket-cookie": "0.0.2-beta"
+    "pocket-cookie": "^0.0.4"
   }
 }
