@@ -2,7 +2,7 @@
 
 A JavaScript cookie library
 
- - simple api ([get](#get),[set](#set))
+ - simple api ([get](#get),[set](#set),[clear](#clear),[clearAll](#clearAll))
  - support auto type cast api ([getWithAutoCast](#getwithautocast))
  - includes `d.ts`
  - esm
@@ -209,7 +209,29 @@ type keyValuePair = {
 
 ```
 
-### clearAll Cookie
+### clear
+
+```javascript
+    import cookie from 'pocket-cookie'
+
+    cookie.set('foo','bar')
+    cookie.clear('foo')
+    cookie.get('foo')   // =>  null
+```
+
+- Delete a cookie valid to the path of the current page
+
+```javascript
+    import cookie from 'pocket-cookie'
+
+    cookie.set('foo','bar',{path:'/index.html'})
+    cookie.clear('foo')  // fail!
+    cookie.get('foo')   // =>  'bar'
+    cookie.clear('foo',{path:'/index.html'})  // removed!
+    cookie.get('foo')   // =>  null
+```
+
+### clearAll
 
 ```javascript
     import cookie from 'pocket-cookie'
@@ -225,10 +247,14 @@ type keyValuePair = {
 ```javascript
     import cookie from 'pocket-cookie'
 
-    document.cookie = 'foo=bar; path=/'
-    cookie.clearAll()
-    console.log(document.cookie)   // =>  "foo=bar"
+   cookie.set('foo','bar',{path:'/index.html'})
+   cookie.clearAll()
+   console.log(document.cookie)   // =>  "foo=bar"
+   // please use cookie.clear('foo' , {path:'/index.html'})
 ```
+
+## Encoding
+This project is [RFC 6265](https://tools.ietf.org/html/rfc6265#section-4.1.1) compliant
 
 ## development
 

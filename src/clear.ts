@@ -1,15 +1,26 @@
 import { getKeyValuePairsFromCookie } from './getKeyValuePairsFromCookie'
+import set, { CookieAttributes } from './set'
+
+export const clear = (
+  key: string,
+  option?: Pick<CookieAttributes, 'path'>,
+): void => {
+  const dt = new Date('1999-12-31T23:59:59Z') // past dateTime
+
+  const path =
+    option !== undefined && option.path !== undefined ? option.path : undefined
+
+  set(key, '', { expires: dt, path })
+}
 
 /**
  * cannot clear HttpOnly flag set cookies and path set cookies
  */
-const clearAll = (): void => {
+export const clearAll = (): void => {
   const keyValuePairs = getKeyValuePairsFromCookie(true)
   const dt = new Date('1999-12-31T23:59:59Z') // past dateTime
 
   keyValuePairs.forEach(({ key }) => {
-    document.cookie = `${key}=; expires=${dt.toUTCString()}`
+    set(key, '', { expires: dt })
   })
 }
-
-export default clearAll
