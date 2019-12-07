@@ -12,13 +12,13 @@
   "author": "kotatu <yamamichi1995@outlook.jp> (https://github.com/aclearworld)",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.6.4",
-    "@babel/preset-env": "^7.6.3",
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.5",
     "@types/webpack": "^4.39.5",
-    "webpack-dev-server": "^3.9.0",
     "babel-loader": "^8.0.6",
     "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.9"
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.9.0"
   },
   "dependencies": {
     "pocket-cookie": "^0.0.4"
