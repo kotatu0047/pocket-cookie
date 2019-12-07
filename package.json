@@ -1,6 +1,6 @@
 {
   "name": "pocket-cookie",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "a JavaScript cookie library",
   "main": "dist/pocket-cookie.js",
   "browser": "dist/pocket-cookie.js",
@@ -63,6 +63,7 @@
     "rollup": "^1.27.4",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-license": "^0.13.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "tslib": "^1.10.0",
     "typescript": "^3.7.2"
