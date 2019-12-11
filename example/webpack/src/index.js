@@ -1,4 +1,4 @@
-import cookie from '../../../dist/pocket-cookie'
+import cookie from 'pocket-cookie'
 
 /**
  * Basic Usage

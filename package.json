@@ -17,7 +17,8 @@
     "rollup": "rollup -c",
     "postbuild": "rm ./dist/*.test.d.ts",
     "test": "jest",
-    "test:dev": "jest --watch --no-coverage"
+    "test:dev": "jest --watch --no-coverage",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -33,25 +34,25 @@
     "dist/**/*"
   ],
   "devDependencies": {
-    "@babel/core": "^7.7.4",
+    "@babel/core": "^7.7.5",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.7.4",
-    "@babel/plugin-transform-modules-commonjs": "^7.7.4",
-    "@babel/preset-env": "^7.7.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
     "@babel/preset-typescript": "^7.7.4",
     "@types/jest": "^24.0.23",
     "@types/ts-nameof": "^4.2.0",
-    "@typescript-eslint/eslint-plugin": "^2.8.0",
-    "@typescript-eslint/parser": "^2.8.0",
+    "@typescript-eslint/eslint-plugin": "^2.11.0",
+    "@typescript-eslint/parser": "^2.11.0",
     "babel-jest": "^24.9.0",
     "babel-plugin-ts-nameof": "^4.2.0",
-    "eslint": "^6.7.0",
+    "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
     "eslint-config-standard": "^14.1.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^23.0.4",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jest": "^23.1.1",
     "eslint-plugin-node": "^10.0.0",
-    "eslint-plugin-prefer-arrow": "^1.1.6",
+    "eslint-plugin-prefer-arrow": "^1.1.7",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
@@ -60,13 +61,13 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^1.19.1",
     "rimraf": "^3.0.0",
-    "rollup": "^1.27.4",
-    "rollup-plugin-babel": "^4.3.2",
+    "rollup": "^1.27.9",
+    "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-license": "^0.13.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "tslib": "^1.10.0",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.3"
   },
   "dependencies": {
     "moment": "^2.24.0"

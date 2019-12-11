@@ -13,7 +13,7 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.7.5",
-    "@babel/preset-env": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
     "@types/webpack": "^4.39.5",
     "babel-loader": "^8.0.6",
     "webpack": "^4.41.2",
